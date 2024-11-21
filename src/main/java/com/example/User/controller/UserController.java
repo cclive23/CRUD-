@@ -15,7 +15,7 @@ import java.util.Optional;
 @RequestMapping("/api")
 public class UserController {
 
-
+    // Constant variable to store external url
     private static final String TODO_API_URL = "https://jsonplaceholder.typicode.com/todos/";
 
     @Autowired
