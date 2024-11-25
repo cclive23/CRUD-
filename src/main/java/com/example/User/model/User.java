@@ -6,9 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@NoArgsConstructor /*Creates an automatic contructors with no arguments*/
-@AllArgsConstructor
+@Data  /*Lombok annotation that creates the setters and getters of the fields in the class*/
+@NoArgsConstructor /*Lombok annotation that creates an automatic constructor with no arguments*/
+@AllArgsConstructor /*Lombok annotation that creates an automatic constructor with arguments*/
 @Table(name = "users")
 public class User {
 
