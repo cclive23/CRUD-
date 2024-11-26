@@ -3,9 +3,8 @@ package com.example.User.service;
 import com.example.User.model.User;
 import com.example.User.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
-import com.example.User.UserException.UserNotFoundException;
+
 
 import java.util.List;
 import java.util.Optional;

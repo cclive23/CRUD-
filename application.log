@@ -1571,3 +1571,45 @@ Caused by: java.lang.ClassNotFoundException: com.example.User.UserException.User
 2024-11-26T06:19:10.694+02:00  INFO 8592 --- [http-nio-8080-exec-2] c.e.User.controller.UserController       : Deleting user with ID: 10
 2024-11-26T06:19:10.701+02:00  WARN 8592 --- [http-nio-8080-exec-2] c.e.User.controller.UserController       : User with ID 10 not found for deletion
 2024-11-26T06:19:10.706+02:00  WARN 8592 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.example.User.UserException.UserNotFoundException: User with ID 10 not found for deletion]
+2024-11-26T06:20:17.354+02:00  INFO 8592 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-11-26T06:20:17.362+02:00  INFO 8592 --- [Thread-23] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-26T06:20:17.363+02:00  INFO 8592 --- [Thread-23] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2024-11-26T06:20:17.368+02:00  INFO 8592 --- [Thread-23] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2024-11-26T06:20:17.438+02:00  INFO 8592 --- [restartedMain] com.example.User.UserApplication         : Starting UserApplication using Java 23.0.1 with PID 8592 (/Users/kirengasarah/Downloads/User/target/classes started by kirengasarah in /Users/kirengasarah/Downloads/User)
+2024-11-26T06:20:17.438+02:00 DEBUG 8592 --- [restartedMain] com.example.User.UserApplication         : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-11-26T06:20:17.438+02:00  INFO 8592 --- [restartedMain] com.example.User.UserApplication         : No active profile set, falling back to 1 default profile: "default"
+2024-11-26T06:20:17.627+02:00  INFO 8592 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-26T06:20:17.627+02:00  INFO 8592 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-11-26T06:20:17.629+02:00  INFO 8592 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.User.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-11-26T06:20:17.629+02:00  INFO 8592 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JDBC repository interfaces.
+2024-11-26T06:20:17.631+02:00  INFO 8592 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-26T06:20:17.631+02:00  INFO 8592 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-26T06:20:17.634+02:00  INFO 8592 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 1 JPA repository interface.
+2024-11-26T06:20:17.742+02:00  INFO 8592 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-11-26T06:20:17.743+02:00  INFO 8592 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-26T06:20:17.743+02:00  INFO 8592 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-26T06:20:17.751+02:00  INFO 8592 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-11-26T06:20:17.752+02:00  INFO 8592 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 312 ms
+2024-11-26T06:20:17.883+02:00  INFO 8592 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-26T06:20:17.884+02:00  INFO 8592 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-26T06:20:17.890+02:00  INFO 8592 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-26T06:20:17.891+02:00  INFO 8592 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2024-11-26T06:20:17.909+02:00  INFO 8592 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7f015859
+2024-11-26T06:20:17.909+02:00  INFO 8592 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2024-11-26T06:20:17.910+02:00  WARN 8592 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-26T06:20:17.935+02:00  INFO 8592 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-26T06:20:17.941+02:00  INFO 8592 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-26T06:20:18.076+02:00  WARN 8592 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-26T06:20:18.506+02:00  INFO 8592 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-11-26T06:20:18.511+02:00  INFO 8592 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-11-26T06:20:18.536+02:00  INFO 8592 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-11-26T06:20:18.543+02:00  INFO 8592 --- [restartedMain] com.example.User.UserApplication         : Started UserApplication in 1.123 seconds (process running for 951.428)
+2024-11-26T06:20:18.544+02:00  INFO 8592 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-11-26T06:39:47.442+02:00  WARN 8592 --- [HikariPool-7 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Thread starvation or clock leap detected (housekeeper delta=15m29s397ms).
+2024-11-26T06:55:16.771+02:00  WARN 8592 --- [HikariPool-7 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Thread starvation or clock leap detected (housekeeper delta=15m29s330ms).
+2024-11-26T07:10:46.181+02:00  WARN 8592 --- [HikariPool-7 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Thread starvation or clock leap detected (housekeeper delta=15m29s410ms).
+2024-11-26T07:26:15.391+02:00  WARN 8592 --- [HikariPool-7 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Thread starvation or clock leap detected (housekeeper delta=15m29s210ms).
+2024-11-26T07:41:44.682+02:00  WARN 8592 --- [HikariPool-7 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Thread starvation or clock leap detected (housekeeper delta=15m29s291ms).
+2024-11-26T08:12:18.762+02:00  WARN 8592 --- [HikariPool-7 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Thread starvation or clock leap detected (housekeeper delta=30m34s80ms).
+2024-11-26T08:14:43.463+02:00  WARN 8592 --- [HikariPool-7 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Thread starvation or clock leap detected (housekeeper delta=2m24s701ms).
+2024-11-26T08:38:17.838+02:00  WARN 8592 --- [HikariPool-7 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Thread starvation or clock leap detected (housekeeper delta=23m34s375ms).
