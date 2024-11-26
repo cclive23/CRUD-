@@ -85,7 +85,7 @@ public class UserController {
         throw new UserNotFoundException("User with ID " + id + " not found for deletion");
     }
 
-    // Endpoint to call external TODO API (example)
+    // Endpoint to call external URI
     @GetMapping("/todo/{id}")
     public ResponseEntity<String> getTodoById(@PathVariable Long id) {
         log.info("Fetching TODO item with ID: " + id);
