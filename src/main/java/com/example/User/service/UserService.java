@@ -45,17 +45,8 @@ public class UserService {
     }
 
     // Delete a user by ID
-    //public void deleteUser(Long id) {userRepository.deleteById(id);}
-    public void deleteUser(Long id) {
+    public void deleteUser(Long id) {userRepository.deleteById(id);}
 
-        try {
-            userRepository.deleteById(id);
-        } catch (EmptyResultDataAccessException e) {
-            throw new UserNotFoundException("User with ID " + id + " not found for deletion");
-        }catch (Exception e){
-            throw new RuntimeException("Error occured while deleting User with ID: "+id);
-        }
-    }
 
 
 }
