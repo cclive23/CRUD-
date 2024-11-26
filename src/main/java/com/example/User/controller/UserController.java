@@ -1,5 +1,6 @@
 package com.example.User.controller;
 
+import com.example.User.UserException.UserNotFoundException;
 import com.example.User.model.User;
 import com.example.User.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -17,13 +18,11 @@ import java.util.Optional;
 @Slf4j
 public class UserController {
 
-
-
-
     private static final String TODO_API_URL = "https://jsonplaceholder.typicode.com/todos/";
 
     @Autowired
     private UserService userService;
+
     @Autowired
     private RestTemplate restTemplate;
 
@@ -48,13 +47,13 @@ public class UserController {
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
         log.info("Fetching user with ID: " + id);
         Optional<User> user = userService.getUserById(id);
-        // If statement for LOG in case User is not found by ID.
         if (user.isPresent()) {
             log.info("User found: " + user.get());
+            return new ResponseEntity<>(user.get(), HttpStatus.OK);
         } else {
             log.warn("User with ID " + id + " not found");
+            throw new UserNotFoundException("User with ID " + id + " not found");
         }
-        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     // Update user by ID
@@ -63,15 +62,13 @@ public class UserController {
         log.info("Updating user with ID: " + id);
         Optional<User> existingUser = userService.getUserById(id);
         if (existingUser.isPresent()) {
-            log.info("User found: " + existingUser.get());
             user.setId(id);
             User updatedUser = userService.saveUser(user);
             log.info("User updated: " + updatedUser);
             return new ResponseEntity<>(updatedUser, HttpStatus.OK);
         }
-        // If user is found the below statements are not run since the return is in IF TRUE statement
         log.warn("User with ID " + id + " not found for update");
-        return ResponseEntity.notFound().build();
+        throw new UserNotFoundException("User with ID " + id + " not found for update");
     }
 
     // Delete user by ID
@@ -80,29 +77,26 @@ public class UserController {
         log.info("Deleting user with ID: " + id);
         Optional<User> user = userService.getUserById(id);
         if (user.isPresent()) {
-            log.info("User found: " + user.get());
             userService.deleteUser(id);
             log.info("User with ID " + id + " deleted");
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);  // 204 No Content
         }
-        // If user is found the below statements are not run since the return is in IF TRUE statement
         log.warn("User with ID " + id + " not found for deletion");
-        return ResponseEntity.notFound().build();
+        throw new UserNotFoundException("User with ID " + id + " not found for deletion");
     }
 
-    // Endpoint to call external endpoint
-    // Qn: Is it possible to change content from an endpoint that's not yours using PUT HTTP request.
+    // Endpoint to call external TODO API (example)
     @GetMapping("/todo/{id}")
     public ResponseEntity<String> getTodoById(@PathVariable Long id) {
         log.info("Fetching TODO item with ID: " + id);
         String url = TODO_API_URL + id;
-        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
-        log.info("Response from TODO API: " + response.getBody());
-        return response;
+        try {
+            ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+            log.info("Response from TODO API: " + response.getBody());
+            return response;  // Return the external API response
+        } catch (Exception e) {
+            log.error("Error fetching TODO item", e);
+            return new ResponseEntity<>("Error fetching TODO item", HttpStatus.INTERNAL_SERVER_ERROR);  // Handle external API errors
+        }
     }
-
-
-
-
-
 }

@@ -3,7 +3,9 @@ package com.example.User.service;
 import com.example.User.model.User;
 import com.example.User.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
+import com.example.User.UserException.UserNotFoundException;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +15,8 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+
 
     // Create or Update a user
     public User saveUser(User user) {
@@ -30,7 +34,6 @@ public class UserService {
     }
 
 
-
     // Update a user by ID
     public User updateUser(Long id, User user) {
         Optional<User> existingUser = userRepository.findById(id);
@@ -42,7 +45,17 @@ public class UserService {
     }
 
     // Delete a user by ID
+    //public void deleteUser(Long id) {userRepository.deleteById(id);}
     public void deleteUser(Long id) {
-        userRepository.deleteById(id);
+
+        try {
+            userRepository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new UserNotFoundException("User with ID " + id + " not found for deletion");
+        }catch (Exception e){
+            throw new RuntimeException("Error occured while deleting User with ID: "+id);
+        }
     }
+
+
 }
